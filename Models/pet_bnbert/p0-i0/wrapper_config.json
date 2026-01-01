@@ -1,0 +1,1 @@
+{"py/object": "pet.wrapper.WrapperConfig", "cache_dir": "", "label_list": ["1", "2", "3"], "max_seq_length": 256, "model_name_or_path": "/content/drive/MyDrive/Models/CSE498", "model_type": "bert", "pattern_id": 0, "task_name": "asl", "verbalizer_file": null, "wrapper_type": "sequence_classifier"}

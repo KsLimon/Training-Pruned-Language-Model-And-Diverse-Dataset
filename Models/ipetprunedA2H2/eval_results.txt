@@ -1,0 +1,2 @@
+acc = 47.93714833879423
+perplexity = tensor(6.8387)
