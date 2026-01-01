@@ -1,0 +1,2 @@
+# Training-Pruned-Language-Model-And-Diverse-Dataset
+Developed ”BnBERT ipet pruned”, a sparse Bengali language model achieving state-of-the-art performance with 90% fewer parameters than standard BERT. Using iterative pattern-exploiting training and Lottery Ticket hypothesis pruning, the model matched leading models like Bangla Electra and Indic-Bert while significantly reducing memory and time uses.
