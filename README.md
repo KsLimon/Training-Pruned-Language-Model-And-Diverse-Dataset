@@ -94,7 +94,7 @@ Bangla, despite being the world's sixth most spoken language with 230 million na
 
 ## Methodology
 
-![Methodology Flowchart](img1/methodology_diagram.png)
+![Methodology Flowchart](https://github.com/KsLimon/Training-Pruned-Language-Model-And-Diverse-Dataset/blob/master/A%20Final%20Paper/img1.png)
 *Figure 1: Complete methodology workflow showing the process from base model to pruned model*
 
 Our approach consists of three main phases:
@@ -164,7 +164,7 @@ A subnetwork f(x; m ⊙ θ, γ^T_0) is universal for tasks {T_i}^N_i=1 if it mat
 
 ### Dataset Construction
 
-![Dataset Construction Process](img2/dataset_construction.png)
+![Dataset Construction Process](https://github.com/KsLimon/Training-Pruned-Language-Model-And-Diverse-Dataset/blob/master/A%20Final%20Paper/img2.png)
 *Figure 2: Procedure for constructing the diverse Bangla dataset*
 
 **Pretraining Corpus:**
@@ -383,129 +383,6 @@ PP(W) = ᴺ√(∏ᴺᵢ₌₁ 1/P(Wᵢ|Wᵢ₋₁))
 
 ---
 
-## Installation
-
-### Prerequisites
-
-```bash
-Python >= 3.7
-PyTorch >= 1.7.0
-transformers >= 4.0.0
-```
-
-### Setup
-
-```bash
-# Clone the repository
-git clone https://github.com/yourusername/training-pruned-language-model.git
-cd training-pruned-language-model
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Download pre-trained model
-python scripts/download_model.py
-```
-
-### Requirements.txt
-
-```
-torch>=1.7.0
-transformers>=4.0.0
-numpy>=1.19.0
-pandas>=1.1.0
-scikit-learn>=0.23.0
-tqdm>=4.50.0
-```
-
----
-
-## Usage
-
-### 1. Data Preparation
-
-```python
-from data_preprocessing import prepare_bangla_corpus
-
-# Prepare your dataset
-corpus = prepare_bangla_corpus(
-    input_dir="raw_data/",
-    output_dir="processed_data/",
-    train_split=0.8
-)
-```
-
-### 2. Fine-tuning Base Model
-
-```python
-from training import finetune_base_model
-
-model = finetune_base_model(
-    model_name="ckiplab/albert-tiny-chinese",
-    dataset_path="processed_data/train.txt",
-    output_dir="models/base_model/",
-    num_epochs=3,
-    batch_size=32
-)
-```
-
-### 3. Applying iPET
-
-```python
-from ipet import apply_ipet_training
-
-ipet_model = apply_ipet_training(
-    base_model="models/base_model/",
-    task_dataset="datasets/sentiment/",
-    pattern_ids=[0, 1, 2],  # Specify pattern IDs
-    output_dir="models/ipet_model/"
-)
-```
-
-### 4. Pruning with Lottery Ticket Hypothesis
-
-```python
-from pruning import lottery_ticket_pruning
-
-pruned_model = lottery_ticket_pruning(
-    model_path="models/ipet_model/",
-    sparsity_rate=0.9,  # 90% pruning
-    prune_per_iteration=0.1,  # 10% per step
-    output_dir="models/pruned_model/"
-)
-```
-
-### 5. Evaluation on Downstream Tasks
-
-```python
-from evaluation import evaluate_model
-
-results = evaluate_model(
-    model_path="models/pruned_model/",
-    tasks=["sentiment", "emotion", "pos_tagging"],
-    test_data_dir="datasets/test/"
-)
-
-print(results)
-```
-
-### Example: Complete Pipeline
-
-```python
-from pipeline import train_pruned_model
-
-# Complete training pipeline
-final_model = train_pruned_model(
-    corpus_path="data/bangla_corpus.txt",
-    base_model="ckiplab/albert-tiny-chinese",
-    downstream_tasks=["sentiment", "emotion", "ner"],
-    sparsity=0.9,
-    output_dir="models/final/"
-)
-```
-
----
-
 ## Key Advantages
 
 ### Environmental Benefits
@@ -558,13 +435,6 @@ If you use this work, please cite:
   publisher={IEEE}
 }
 ```
-
----
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ---
 
 ## Acknowledgments
@@ -581,20 +451,6 @@ For questions and feedback:
 
 - 📧 Email: kamrus.samad@northsouth.edu
 - 🏛️ Institution: North South University, Bangladesh
-- 🌐 [Project Website](#)
-- 💻 [GitHub Repository](#)
-
----
-
-## Contributing
-
-We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details on how to contribute to this project.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
 
 ---
 
